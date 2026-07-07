@@ -1,10 +1,10 @@
-# 🎣 Phishing Email Analysis
+# Phishing Email Analysis
 
 > A practical SOC analyst project demonstrating manual and automated phishing email analysis, IOC extraction, malware investigation, and incident reporting.
 
 ---
 
-## 📌 Project Objective
+##  Project Objective
 
 This repository demonstrates how Security Operations Center (SOC) analysts investigate phishing emails from initial detection to final incident response.
 
@@ -23,7 +23,7 @@ The objective is to:
 
 ---
 
-## 🛠️ Tools Used
+##  Tools Used
 
 | Category | Tools |
 |-----------|-------|
@@ -37,7 +37,7 @@ The objective is to:
 
 ---
 
-## 📚 What You'll Learn
+##  What You'll Learn
 
 - Phishing Email Investigation
 - Email Header Analysis
@@ -50,7 +50,7 @@ The objective is to:
 
 ---
 
-## 📂 Analysis Stages
+##  Analysis Stages
 
 ### Stage 1 – Email Collection
 
@@ -146,7 +146,7 @@ Extract:
 
 ---
 
-## 📁 Sample Cases
+##  Sample Cases
 
 | Case | Description |
 |------|-------------|
@@ -158,7 +158,7 @@ Extract:
 
 ---
 
-## 📌 Skills Demonstrated
+##  Skills Demonstrated
 
 - SOC Investigation
 - Malware Analysis
