@@ -1,244 +1,169 @@
-Phishing Email Analysis
-Overview
+# 🎣 Phishing Email Analysis
 
-This repository demonstrates how phishing emails are analyzed from the perspective of a Security Operations Center (SOC) analyst.
+> A practical SOC analyst project demonstrating manual and automated phishing email analysis, IOC extraction, malware investigation, and incident reporting.
 
-The objective is to determine whether an email is malicious, identify Indicators of Compromise (IOCs), understand attacker techniques, analyze attachments or URLs, and produce an incident report.
+---
 
-The repository combines both manual investigation and automated malware analysis to simulate a real-world SOC workflow.
+## 📌 Project Objective
 
-What is a Phishing Email?
+This repository demonstrates how Security Operations Center (SOC) analysts investigate phishing emails from initial detection to final incident response.
 
-A phishing email is a malicious email designed to trick a user into performing an action such as:
+The objective is to:
 
-Opening a malicious attachment
-Clicking a malicious URL
-Entering credentials
-Installing malware
-Sending sensitive information
+- Analyze suspicious emails
+- Investigate headers
+- Analyze attachments
+- Examine URLs
+- Extract Indicators of Compromise (IOCs)
+- Map attacker techniques to MITRE ATT&CK
+- Produce an incident report
 
-Common phishing goals include:
+---
 
-Credential theft
-Malware delivery
-Initial Access
-Business Email Compromise (BEC)
-Financial Fraud
-Phishing Email Analysis Stages
-Stage 1 – Email Collection
 
-Receive the suspicious email.
+---
 
-Sources
+## 🛠️ Tools Used
 
-User Report
-Secure Email Gateway
-Microsoft Defender
-Gmail
-Exchange
-SOC Alert
+| Category | Tools |
+|-----------|-------|
+| Header Analysis | MXToolbox, Google Header Analyzer |
+| Malware Analysis | ANY.RUN, Hybrid Analysis |
+| URL Analysis | VirusTotal, URLScan.io |
+| Threat Intelligence | ThreatFox, AbuseIPDB |
+| Network Analysis | Wireshark, tcpdump |
+| Endpoint Detection | Wazuh, Sysmon |
+| Detection Rules | Sigma, YARA |
 
-Evidence Collected
+---
 
-Original Email (.eml)
-Headers
-Attachments
-URLs
-Stage 2 – Initial Triage
+## 📚 What You'll Learn
 
-Determine whether the email is suspicious.
+- Phishing Email Investigation
+- Email Header Analysis
+- Attachment Analysis
+- Malicious URL Investigation
+- IOC Extraction
+- Malware Analysis
+- MITRE ATT&CK Mapping
+- SOC Incident Response
 
-Check
+---
 
-Sender
-Subject
-Attachment
-URL
-Urgency
-Grammar
-Brand impersonation
+## 📂 Analysis Stages
 
-Decision
+### Stage 1 – Email Collection
 
-Benign
-Suspicious
-Malicious
-Stage 3 – Header Analysis
+Collect:
 
-Analyze email headers.
+- Original Email (.eml)
+- Attachments
+- URLs
+- Email Headers
 
-Investigate
+---
 
-From
-Reply-To
-Return-Path
-SPF
-DKIM
-DMARC
-Message-ID
-Received chain
+### Stage 2 – Initial Triage
 
-Goal
+Verify:
 
-Determine if sender identity was spoofed.
+- Sender
+- Subject
+- Urgency
+- Grammar
+- Attachment
+- URL
 
-Stage 4 – URL Analysis
+---
 
-Analyze embedded URLs.
+### Stage 3 – Header Analysis
 
-Check
+Investigate:
 
-Domain Reputation
-IP Address
-WHOIS
-DNS
-HTTPS Certificate
-URL Redirections
-Stage 5 – Attachment Analysis
+- SPF
+- DKIM
+- DMARC
+- Return-Path
+- Reply-To
+- Received Chain
 
-Analyze every attachment.
+---
 
-Possible Types
+### Stage 4 – URL Analysis
 
-PDF
-DOCM
-XLSM
-ZIP
-ISO
-EXE
-LNK
+Check:
 
-Determine
+- Domain Reputation
+- WHOIS
+- DNS
+- SSL Certificate
+- Redirects
 
-Hashes
-Metadata
-Macros
-Embedded URLs
-Droppers
-Stage 6 – Malware Analysis
+---
 
-If attachment is malicious
+### Stage 5 – Attachment Analysis
 
-Perform
+Analyze:
 
-Static Analysis
+- File Hash
+- Metadata
+- Macros
+- Embedded URLs
+- File Type
 
-File Hash
-Strings
-PE Information
-Imports
-Entropy
+---
 
-Dynamic Analysis
+### Stage 6 – Malware Analysis
 
-Process Creation
-Network Traffic
-Registry Changes
-Dropped Files
-Persistence
-Stage 7 – IOC Extraction
+Perform:
 
-Extract
+- Static Analysis
+- Dynamic Analysis
+- Network Traffic Analysis
+- Persistence Analysis
 
-IP Addresses
-Domains
-URLs
-File Hashes
-Registry Keys
-Mutexes
-File Names
-Stage 8 – Detection
+---
 
-Map findings.
+### Stage 7 – IOC Extraction
 
-Examples
+Extract:
 
-MITRE ATT&CK
+- IP Addresses
+- Domains
+- URLs
+- Hashes
+- Registry Keys
 
-T1566.001
+---
 
-Phishing Attachment
+### Stage 8 – Detection & Response
 
-T1566.002
+- MITRE ATT&CK Mapping
+- Wazuh Detection
+- Sigma Rules
+- YARA Rules
+- Incident Report
 
-Phishing Link
+---
 
-T1204
+## 📁 Sample Cases
 
-User Execution
+| Case | Description |
+|------|-------------|
+| Case 01 | Malicious PDF Attachment |
+| Case 02 | Fake Microsoft Login Page |
+| Case 03 | ZIP File Malware Delivery |
+| Case 04 | HTML Smuggling |
+| Case 05 | Invoice Phishing |
 
-T1059
+---
 
-Command Execution
+## 📌 Skills Demonstrated
 
-Stage 9 – Containment
-
-SOC actions
-
-Block sender
-Block domain
-Block URL
-Block hash
-Isolate endpoint
-Reset credentials
-Stage 10 – Reporting
-
-Produce final report
-
-Include
-
-Timeline
-Root Cause
-Malware Family
-IOCs
-MITRE Mapping
-Recommendations
-Manual vs Automated Phishing Analysis
-Manual Analysis	Automated Analysis
-Human Investigation	Sandbox Analysis
-Email Header Review	VirusTotal
-URL Inspection	ANY.RUN
-Attachment Inspection	Joe Sandbox
-IOC Extraction	Hybrid Analysis
-MITRE Mapping	CAPE Sandbox
-Report Writing	Automated IOC Extraction
-Analyst Decision	YARA Detection
-Tools Used
-Email Analysis
-Thunderbird
-Outlook
-Gmail
-Header Analysis
-MXToolbox
-Google Header Analyzer
-URL Analysis
-VirusTotal
-URLScan
-WHOIS
-AbuseIPDB
-Cisco Talos
-Attachment Analysis
-7-Zip
-pdfid
-oledump.py
-olevba
-pefile
-Malware Analysis
-ANY.RUN
-Hybrid Analysis
-CAPE Sandbox
-Procmon
-Process Explorer
-Network Analysis
-Wireshark
-tcpdump
-IOC Intelligence
-VirusTotal
-ThreatFox
-MalwareBazaar
-AlienVault OTX
-Detection
-Wazuh
-Sysmon
-Sigma Rules
-YARA
+- SOC Investigation
+- Malware Analysis
+- Threat Hunting
+- IOC Extraction
+- Network Analysis
+- Incident Response
+- Threat Intelligence
