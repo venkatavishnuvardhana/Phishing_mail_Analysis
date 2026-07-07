@@ -1,169 +1,190 @@
-# Phishing Email Analysis
+#  Project Objective
 
-> A practical SOC analyst project demonstrating manual and automated phishing email analysis, IOC extraction, malware investigation, and incident reporting.
+This repository demonstrates how a Security Operations Center (SOC) analyst performs a complete phishing email investigation from initial detection to final incident reporting.
 
----
-
-##  Project Objective
-
-This repository demonstrates how Security Operations Center (SOC) analysts investigate phishing emails from initial detection to final incident response.
-
-The objective is to:
-
-- Analyze suspicious emails
-- Investigate headers
-- Analyze attachments
-- Examine URLs
-- Extract Indicators of Compromise (IOCs)
-- Map attacker techniques to MITRE ATT&CK
-- Produce an incident report
+The objective is not only to determine whether an email is malicious, but also to understand the attacker's techniques, identify Indicators of Compromise (IOCs), assess business risk, and recommend defensive actions.
 
 ---
 
+#  Investigation Methodology
 
----
+The investigation follows the same workflow commonly used by SOC analysts during phishing investigations.
 
-##  Tools Used
+## 1️ Email Header Analysis
 
-| Category | Tools |
-|-----------|-------|
-| Header Analysis | MXToolbox, Google Header Analyzer |
-| Malware Analysis | ANY.RUN, Hybrid Analysis |
-| URL Analysis | VirusTotal, URLScan.io |
-| Threat Intelligence | ThreatFox, AbuseIPDB |
-| Network Analysis | Wireshark, tcpdump |
-| Endpoint Detection | Wazuh, Sysmon |
-| Detection Rules | Sigma, YARA |
+**Purpose**
 
----
+Verify the legitimacy of the sender and identify spoofing attempts.
 
-##  What You'll Learn
+**What is analyzed**
 
-- Phishing Email Investigation
-- Email Header Analysis
-- Attachment Analysis
-- Malicious URL Investigation
-- IOC Extraction
-- Malware Analysis
-- MITRE ATT&CK Mapping
-- SOC Incident Response
-
----
-
-##  Analysis Stages
-
-### Stage 1 – Email Collection
-
-Collect:
-
-- Original Email (.eml)
-- Attachments
-- URLs
-- Email Headers
-
----
-
-### Stage 2 – Initial Triage
-
-Verify:
-
-- Sender
-- Subject
-- Urgency
-- Grammar
-- Attachment
-- URL
-
----
-
-### Stage 3 – Header Analysis
-
-Investigate:
-
+- From Address
+- Reply-To Address
+- Return-Path
+- Sender IP Address
+- Received Headers
 - SPF
 - DKIM
 - DMARC
-- Return-Path
-- Reply-To
-- Received Chain
+- Message-ID
+
+**What we identify**
+
+- Sender spoofing
+- Authentication failures
+- Mail server path
+- Real sending infrastructure
+- Suspicious mail routing
 
 ---
 
-### Stage 4 – URL Analysis
+## 2️ Email Content Analysis
 
-Check:
+**Purpose**
 
-- Domain Reputation
-- WHOIS
-- DNS
-- SSL Certificate
-- Redirects
+Understand the attacker's social engineering strategy.
+
+**What is analyzed**
+
+- Subject line
+- Email body
+- Branding
+- Language
+- Urgency
+- Psychological manipulation
+- Embedded buttons
+- Requests made to the victim
+
+**What we identify**
+
+- Brand impersonation
+- Fear or urgency tactics
+- Credential harvesting attempts
+- Financial fraud
+- Business Email Compromise indicators
 
 ---
 
-### Stage 5 – Attachment Analysis
+## 3️ URL Analysis
 
-Analyze:
+**Purpose**
 
-- File Hash
-- Metadata
-- Macros
+Determine whether embedded links redirect victims to malicious websites.
+
+**What is analyzed**
+
 - Embedded URLs
-- File Type
+- Redirect chain
+- Landing page
+- Domain reputation
+- WHOIS information
+- SSL Certificate
+- URLScan
+- VirusTotal
+- PhishTank
+
+**What we identify**
+
+- Credential phishing pages
+- URL shorteners
+- Malicious domains
+- Newly registered domains
+- Suspicious redirects
+
+---
+## 4️ Attachment Analysis (If Present)
+
+**Purpose**
+
+Determine whether the attachment contains malware or malicious content.
+
+**What is analyzed**
+
+- File extension
+- File hash
+- Static analysis
+- Dynamic analysis
+- Office macros
+- JavaScript
+- PDF objects
+
+**What we identify**
+
+- Malware
+- Droppers
+- Loaders
+- Remote Access Trojans (RATs)
+- Malicious scripts
 
 ---
 
-### Stage 6 – Malware Analysis
+## 5️ IOC Extraction
 
-Perform:
+**Purpose**
 
-- Static Analysis
-- Dynamic Analysis
-- Network Traffic Analysis
-- Persistence Analysis
+Collect all Indicators of Compromise for future detection and response.
 
----
-
-### Stage 7 – IOC Extraction
-
-Extract:
+**Collected IOCs**
 
 - IP Addresses
 - Domains
 - URLs
-- Hashes
-- Registry Keys
+- Email Addresses
+- File Hashes
+- File Names
+- Message IDs
+
+**Usage**
+
+These indicators can be imported into SIEM, EDR, IDS, firewall, or threat intelligence platforms.
 
 ---
 
-### Stage 8 – Detection & Response
+## 6️ MITRE ATT&CK Mapping
 
+**Purpose**
+
+Map attacker behavior to the MITRE ATT&CK framework.
+
+**Examples**
+
+- T1566 – Phishing
+- T1566.002 – Spearphishing Link
+- T1036 – Masquerading
+- T1204 – User Execution
+- T1078 – Valid Accounts
+
+This helps security teams understand attacker techniques and improve detection coverage.
+
+---
+
+## 7️ Incident Report
+
+**Purpose**
+
+Produce a professional investigation report.
+
+The report includes:
+
+- Executive Summary
+- Header Analysis
+- Content Analysis
+- URL Analysis
+- IOC Summary
 - MITRE ATT&CK Mapping
-- Wazuh Detection
-- Sigma Rules
-- YARA Rules
-- Incident Report
+- Risk Assessment
+- Final Verdict
+- Recommended Defensive Actions
 
 ---
 
-##  Sample Cases
+#  Project Outcome
 
-| Case | Description |
-|------|-------------|
-| Case 01 | Malicious PDF Attachment |
-| Case 02 | Fake Microsoft Login Page |
-| Case 03 | ZIP File Malware Delivery |
-| Case 04 | HTML Smuggling |
-| Case 05 | Invoice Phishing |
+At the end of each investigation, the analyst is able to:
 
----
-
-##  Skills Demonstrated
-
-- SOC Investigation
-- Malware Analysis
-- Threat Hunting
-- IOC Extraction
-- Network Analysis
-- Incident Response
-- Threat Intelligence
+- Determine whether the email is legitimate or malicious.
+- Identify the attacker's objective.
+- Understand how the phishing attack works.
+- Extract Indicators of Compromise (IOCs).
+- Map the attack to MITRE ATT&CK.
+- Produce a professional incident report suitable for SOC documentation.
