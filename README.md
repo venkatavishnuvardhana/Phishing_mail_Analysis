@@ -1,3 +1,4 @@
+Phishing Email Analysis
 Overview
 
 This repository demonstrates how phishing emails are analyzed from the perspective of a Security Operations Center (SOC) analyst.
